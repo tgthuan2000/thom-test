@@ -1,0 +1,36 @@
+{
+  "name": "thom",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@formkit/auto-animate": "^1.0.0-beta.3",
+    "@hookform/resolvers": "^2.9.8",
+    "@mui/lab": "^5.0.0-alpha.102",
+    "@mui/material": "^5.10.8",
+    "@sanity/client": "^3.4.1",
+    "autoprefixer": "^10.4.12",
+    "lodash": "^4.17.21",
+    "postcss": "^8.4.17",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.36.1",
+    "react-toastify": "^9.0.8",
+    "tailwindcss": "^3.1.8",
+    "url": "^0.11.0",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.1.0",
+    "vite": "^3.1.0"
+  }
+}
