@@ -12,6 +12,7 @@ import {
 	TOKEN_STORAGE_KEY,
 	VIEW_FINAL_STEP,
 } from './contants'
+import { uuid } from '@sanity/uuid'
 
 const Information = React.lazy(() => import('./form/Information'))
 const ViewFinal = React.lazy(() => import('./form/ViewFinal'))
@@ -79,27 +80,27 @@ function App() {
 		try {
 			const { content, vocabulary, title } = view
 
-			const _ = client.current.transaction()
+			const __ = client.current.transaction()
+			const vocabularies = []
 
 			// vocabulary
 			vocabulary.split('\n').forEach((vocab) => {
+				const id = uuid()
 				const [en, vi] = vocab.split('|')
-				_.create({ _type: 'vocabulary', en: en.trim(), vi: vi.trim() })
+				vocabularies.push({
+					_type: 'reference',
+					_key: id,
+					_ref: id,
+				})
+				__.createIfNotExists({ _type: 'vocabulary', _id: id, en: en.trim(), vi: vi.trim() })
 			})
 
-			const { documentIds } = await _.commit()
-
-			const __ = client.current.transaction()
 			// story
 			__.create({
 				_type: 'story',
 				content,
 				title,
-				vocabularies: documentIds.map((id) => ({
-					_type: 'reference',
-					_key: id,
-					_ref: id,
-				})),
+				vocabularies,
 			})
 
 			// commit
