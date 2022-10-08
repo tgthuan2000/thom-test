@@ -178,7 +178,7 @@ const Information = React.forwardRef(({ onSubmit, onReset, disabled }, ref) => {
 					)}
 				/>
 			</div>
-			<div className='mt-6 flex gap-6'>
+			<div className='mt-6 flex flex-col md:flex-row gap-6'>
 				<Controller
 					control={control}
 					name='content'
